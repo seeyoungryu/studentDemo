@@ -4,11 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.NoArgsConstructor;
 
-
+@NoArgsConstructor
 @Entity
 public class Student {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,39 +18,22 @@ public class Student {
 
     private int age;
 
-/*
-JPA의 기본 키 생성 전략
-GenerationType.IDENTITY: 데이터베이스의 IDENTITY 열을 사용하여 기본 키 값을 생성합니다.
-(주로 MySQL, PostgreSQL, SQL Server 등에서 사용됩니다.)
-*/
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 }
 
+/*
+<생성자 관련 어노테이션>
+@NoArgsConstructor: 파라미터가 없는 기본 생성자를 생성합니다.
+@AllArgsConstructor: 모든 필드를 파라미터로 받는 생성자를 생성합니다.
+@RequiredArgsConstructor: final 또는 @NonNull 필드를 파라미터로 받는 생성자를 생성합니다.
+
+ */
 
 
+/*
+<JPA의 기본 키 생성 전략>
+Java와 JPA: @GeneratedValue(strategy = GenerationType.IDENTITY) 어노테이션을 사용하여 엔티티의 기본 키 생성을 자동화
+자동 증가: 새로운 행이 삽입될 때마다 값이 자동으로 증가
+*/
 
 
-
+//... getter, setter
