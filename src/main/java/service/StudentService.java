@@ -1,2 +1,4 @@
-package service;public class StudentService {
+package service;
+
+public class StudentService {
 }
