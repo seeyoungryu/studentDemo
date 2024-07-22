@@ -25,7 +25,6 @@ public class Student {
 @NoArgsConstructor: 파라미터가 없는 기본 생성자를 생성합니다.
 @AllArgsConstructor: 모든 필드를 파라미터로 받는 생성자를 생성합니다.
 @RequiredArgsConstructor: final 또는 @NonNull 필드를 파라미터로 받는 생성자를 생성합니다.
-
  */
 
 
