@@ -29,6 +29,7 @@ public class StudentController {
         return ResponseEntity.ok(student);
     }
 
+
     //@PathVariable Long id* 는 URL 경로에서 추출된 id 값을 Long 타입의 id 파라미터로 전달받는다는 의미입니다.
     //즉, GET /students/1 요청이 들어오면, 1이 id 파라미터로 전달됩니다.
 
@@ -92,3 +93,6 @@ public class StudentController {
         return ResponseEntity.noContent().build();
     }
 }
+
+
+//
