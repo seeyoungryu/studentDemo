@@ -45,6 +45,12 @@ public class StudentController {
         return studentService.saveStudent(student);
     }
 
+    /*
+    파라미터: @RequestBody Student student
+    : JSON 데이터를 Student 객체로 변환합니다.
+      (클라이언트가 전송한 학생 데이터를 Student 객체로 매핑합니다.)
+     */
+
     @PutMapping("/{id}")
     public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student studentDetails) {
         Student student = studentService.getStudentById(id);
@@ -56,6 +62,25 @@ public class StudentController {
         Student updatedStudent = studentService.saveStudent(student);
         return ResponseEntity.ok(updatedStudent);
     }
+
+
+    /*
+    @RequestBody Student studentDetails를 사용하여 새로운 Student 객체를 받아오는 이유는
+    클라이언트가 보낸 새로운 학생 정보를 받아오기 위해서입니다.
+    즉, 클라이언트가 보내는 JSON 데이터를 자바 객체로 변환하여 메서드의 파라미터로 전달받는 것입니다.
+    -------------------------------
+        JSON 데이터의 예시)
+
+        {
+        "name": "John Doe",
+        "age": 22
+         }
+    -------------------------------
+    -> 서버는 @RequestBody 어노테이션을 사용하여 요청 본문에 포함된 JSON 데이터를 자바 객체로 변환합니다.
+    이때 변환된 자바 객체가 studentDetails 변수에 저장됩니다.
+
+       */
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
