@@ -1,10 +1,10 @@
-package controller;
+package com.example.studentdemo.controller;
 
-import model.Student;
+import com.example.studentdemo.model.Student;
+import com.example.studentdemo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.StudentService;
 
 import java.util.List;
 
@@ -40,7 +40,7 @@ public class StudentController {
      */
 
 
-    @PostMapping
+    @PostMapping("")
     public Student createStudent(@RequestBody Student student) {
         return studentService.saveStudent(student);
     }

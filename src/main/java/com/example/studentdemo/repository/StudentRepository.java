@@ -1,10 +1,10 @@
-package repository;
+package com.example.studentdemo.repository;
 
 //StudentRepository -> 데이터베이스와 상호작용하는 레파지토리 객체임
 //데이터 접근 및 조작을 담당합니다.
 //이는 데이터베이스와의 통신을 캡슐화하여 비즈니스 로직이 데이터 접근 코드를 직접 다루지 않도록 합니다.
 
-import model.Student;
+import com.example.studentdemo.model.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 //스프링 데이터 JPA에서 제공하는 기본 CRUD 및 페이징 기능을 갖춘 레포지토리 인터페이스입니다.
 
