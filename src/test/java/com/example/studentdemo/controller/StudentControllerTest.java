@@ -18,14 +18,18 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(StudentController.class)
+@WebMvcTest(StudentController.class)   //이 어노테이션은 StudentController를 테스트하기 위한 설정을 자동으로 구성합니다.
+// 스프링 MVC 관련 컴포넌트만 로드하여 테스트 성능을 향상시킵니다.
 public class StudentControllerTest {
 
     @Autowired
-    private MockMvc mockMvc;
+    private MockMvc mockMvc;   //MockMvc를 주입하여 컨트롤러의 HTTP 요청과 응답을 테스트합니다.
 
-    @MockBean
+    @MockBean        //StudentService를 모킹하여 실제 서비스 레이어를 호출하지 않고 테스트할 수 있습니다.
     private StudentService studentService;
+
+
+    //GetStudent Test
 
     @Test
     public void testGetAllStudents() throws Exception {
@@ -39,15 +43,19 @@ public class StudentControllerTest {
 
         List<Student> students = Arrays.asList(student1, student2);
 
-        Mockito.when(studentService.getAllStudents()).thenReturn(students);
+        Mockito.when(studentService.getAllStudents()).thenReturn(students);    //studentService.getAllStudents() 메서드가 호출되면 students 리스트를 반환하도록 모킹합니다.
 
-        mockMvc.perform(get("/students"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].name").value("John Doe"))
+        mockMvc.perform(get("/students"))           //GET /students 요청을 모킹합니다.
+                .andExpect(status().isOk())                     //HTTP 응답 상태가 200 OK인지 검증합니다.
+                .andExpect(jsonPath("$[0].name").value("John Doe"))  //JSON 응답의 첫 번째 요소의 name 필드 값이 "John Doe"인지 검증합니다.
                 .andExpect(jsonPath("$[0].age").value(22))
                 .andExpect(jsonPath("$[1].name").value("Jane Doe"))
                 .andExpect(jsonPath("$[1].age").value(20));
     }
+
+
+    //CtreateStudent Test
+
 
     @Test
     public void testCreateStudent() throws Exception {
