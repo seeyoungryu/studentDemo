@@ -70,8 +70,7 @@ public class StudentControllerTest {
 
 
     //CtreateStudent Test
-
-
+    
     @Test
     public void testCreateStudent() throws Exception {
         Student student = new Student();
